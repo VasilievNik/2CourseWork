@@ -20,11 +20,14 @@ public class Question {
             return false;
         }
         Question question1 = (Question) other;
+        if (question1 == null | question == null){
+            return false;
+        }
         return question.equals(question1.question);
     }
 
     public int hashCode() {
-        return Objects.hash(question)+Objects.hash(answer);
+        return Objects.hash(question);
     }
 
 }
