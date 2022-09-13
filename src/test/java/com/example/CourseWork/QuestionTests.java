@@ -5,6 +5,8 @@ import com.example.CourseWork.Questions.QuestionService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,10 +24,6 @@ public class QuestionTests {
 
 	@Mock
 	QuestionService questionService = new QuestionService() {
-		@Override
-		public Question add(String question, String answer) {
-			return null;
-		}
 
 		@Override
 		public Question add(Question question) {
@@ -67,7 +65,7 @@ public class QuestionTests {
 
 	@Test
 	public void removeTest(){
-		questionService.remove(question2)
+		questionService.remove(question2);
 		expected.remove(1);
 		assertEquals(expected, questionService);
 	}

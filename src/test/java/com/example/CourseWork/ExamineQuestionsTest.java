@@ -6,6 +6,8 @@ import com.example.CourseWork.Questions.QuestionService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -23,44 +25,12 @@ public class ExamineQuestionsTest {
     Question question3 = new Question("a-z?", "ь");
 
     @Mock
-    ExaminerService examinerService = new ExaminerService() {
-        @Override
-        public Collection<Question> getQuestions(int amount) {
-            return null;
-        }
-    };
+    ExaminerService examinerService = null;
 
-    @Mock
-    QuestionService questionService = new QuestionService() {
-        @Override
-        public Question add(String question, String answer) {
-            return null;
-        }
-
-        @Override
-        public Question add(Question question) {
-            return null;
-        }
-
-        @Override
-        public Question remove(Question question) {
-            return null;
-        }
-
-        @Override
-        public Question find(Question question) {
-            return null;
-        }
-
-        @Override
-        public Question getRandomQuestion() {
-            return null;
-        }
-    };
 
     @BeforeEach
     public void setUp(){
-        QuestionService questionService = this.questionService;
+        QuestionService questionService = null;
         questionService.add(question1);
         questionService.add(question2);
         questionService.add(question3);

@@ -10,20 +10,9 @@ import java.util.concurrent.ThreadLocalRandom;
 @Service
 public class QuestionServiceImpl implements QuestionService {
 
-    private static ArrayList<Question> questionList;
+    public static ArrayList<Question> questionList;
 
-    public QuestionServiceImpl(ArrayList<Question> questionList) {
-        QuestionServiceImpl.questionList = questionList;
-    }
-
-    @Override
-    public Question add(String question, String answer) {
-        Question question1 = new Question(question, answer);
-        if (questionList.contains(question1)){
-            throw new QuestionAlreadyExistException();
-        }
-        questionList.add(question1);
-        return question1;
+    public QuestionServiceImpl() {
     }
 
     @Override
