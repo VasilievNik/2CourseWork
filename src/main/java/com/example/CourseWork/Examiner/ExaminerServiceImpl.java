@@ -3,7 +3,6 @@ package com.example.CourseWork.Examiner;
 import com.example.CourseWork.Exceptions.OutOfBoundsException;
 import com.example.CourseWork.Questions.Question;
 import com.example.CourseWork.Questions.QuestionService;
-import com.example.CourseWork.Questions.QuestionServiceImpl;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -19,8 +18,8 @@ public class ExaminerServiceImpl implements ExaminerService{
 
     @Override
     public Collection<Question> getQuestions(int number) {
-        ArrayList<Question> questionList = QuestionServiceImpl.questionList;
-        if(number> questionList.size() | number<=0){
+        Collection<Question> questionList = questionService.getList();
+        if(number> questionList.size() || number<=0){
             throw new OutOfBoundsException();
         }
 

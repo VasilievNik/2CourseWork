@@ -16,8 +16,8 @@ class QuestionController {
     }
 
     @GetMapping("/add")
-    public Question addQuestion(@RequestParam String question, @RequestParam String answer){
-        return questionService.add(question, answer);
+    public Question addQuestion(@RequestParam Question question){
+        return questionService.add(question);
     }
 
     @GetMapping("/remove")
