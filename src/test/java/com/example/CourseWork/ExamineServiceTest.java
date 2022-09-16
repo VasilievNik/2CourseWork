@@ -13,9 +13,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Collections;
 import java.util.Set;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
-
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -39,17 +38,17 @@ public class ExamineServiceTest {
 
     @Test
     public void positiveGetQuestionsTest(){
-        Question question1 = new Question("a?", "no a");
-        Question question2 = new Question("a or b?", "c");
-        Question question3 = new Question("a-z?", "ь");
+        Question question1 = new Question("1", "-1");
+        Question question2 = new Question("2", "-2");
+        Question question3 = new Question("3", "-3");
+        Question question4 = new Question("4", "-4");
 
-        Set<Question> allQuestions = Set.of(question1, question2, question3);
+        Set<Question> allQuestions = Set.of(question1, question2, question3, question4);
 
         when(questionService.getList()).thenReturn(allQuestions);
-        when(questionService.getRandomQuestion()).thenReturn(question1, question2, question1, question3);
+        when(questionService.getRandomQuestion()).thenReturn(question3, question2, question1, question4);
 
-        assertThat(examinerService.getQuestions(3)).containsExactlyInAnyOrder(question1,question2,question1);
-        assertThat(examinerService.getQuestions(3)).contains(question1);
+        assertThat(examinerService.getQuestions(4)).containsExactlyInAnyOrder(question3,question2,question1,question4);
     }
 
 }
